@@ -167,7 +167,8 @@ describe LinkedinCvParser::Utils do
       after  { Timecop.return }
 
       it 'returns date' do
-        expect(subject.parse_date 'Present').to eq(DateTime.new(2016, 9))
+        expected_date = subject.parse_date('Present').strftime("%Y-%m-%d")
+        expect(expected_date).to eq(DateTime.new(2016, 9).strftime("%Y-%m-%d"))
       end
     end
 

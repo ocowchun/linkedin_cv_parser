@@ -24,7 +24,17 @@ class LinkedinCvParser
     def remove_extra_headers
       @personal_information = [data[0],data[1],data[2]]
 
-      result = (@data - @personal_information)
+      reject_idxs = []
+      result = []
+      @data.each_with_index do |line, index|
+        if line == data[0]
+          if data[index + 1] == data[1] && data[index + 2] == data[2]
+            reject_idxs += [index, index +1 ,index +2]
+          end
+        end
+        result << line unless reject_idxs.include?(index)
+      end
+
       @data  = result
     end
 

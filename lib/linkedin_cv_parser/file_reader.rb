@@ -31,6 +31,7 @@ class LinkedinCvParser
     end
 
     def find_file(name)
+      return name if name.class.to_s == "StringIO"
       return name if File.exist?(name)
 
       raise ArgumentError.new("File '#{name}' wasn't found")

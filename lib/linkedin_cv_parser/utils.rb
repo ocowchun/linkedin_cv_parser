@@ -33,7 +33,7 @@ class LinkedinCvParser
       end
 
       def page_number?(line)
-        (line == 'Page') || (Float(line) != nil rescue false)
+        (line == 'Page') || (Float(line) != nil rescue false) || !!(line =~ /Page \d/)
       end
 
       def parse_date(value)

@@ -57,8 +57,10 @@ class LinkedinCvParser
 
       @data.each_with_index do |line, index|
         next if Utils.skip_line?(line)
+        next if Utils.page_number?(line)
         # normalize lines
         line = line.gsub(/\s+/, " ").strip
+
 
         if Utils.header?(line)
           current_header = line

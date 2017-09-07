@@ -126,7 +126,8 @@ describe LinkedinCvParser::Utils do
       [
         "123",
         "Page",
-        "4000000"
+        "4000000",
+        "Page 1"
       ].each do |line|
         expect(subject.page_number? line).to be true
       end

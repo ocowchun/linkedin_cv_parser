@@ -32,6 +32,14 @@ describe LinkedinCvParser::FileReader do
       expect(subject.convert_to_text.count).to eq 116
     end
 
+    it 'raises exepction if file is not pdf' do
+      filename = "#{LinkedinCvParser.root}/spec/fixtures/hello.md"
+
+      subject      = LinkedinCvParser::FileReader.new filename
+
+      expect{ subject.convert_to_text }.to raise_error(LinkedinCvParser::MalformedPDFError)
+    end
+
     it 'raises exepction if not found' do
       bad_filename = 'somefile.pdf'
       subject      = LinkedinCvParser::FileReader.new bad_filename

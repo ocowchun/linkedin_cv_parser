@@ -1,4 +1,6 @@
 class LinkedinCvParser
+  class MalformedPDFError < RuntimeError; end
+
   class FileReader
     attr_reader :filename
 
@@ -19,6 +21,8 @@ class LinkedinCvParser
       reader.pages.map do |page|
         page.text
       end
+    rescue PDF::Reader::MalformedPDFError => e
+      raise MalformedPDFError, e.message
     end
 
     def process_file(filearray)

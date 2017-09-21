@@ -28,9 +28,8 @@ class LinkedinCvParser
 
     def end_date
       dates = get_dates(section[:head][1])
-      @end_date ||= Utils.parse_date dates[1]
+      @end_date ||= Utils.parse_date(dates[1], end_of_year: true)
     end
-
 
     def current?
       dates = get_dates(section[:head][1])

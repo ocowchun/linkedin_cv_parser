@@ -38,16 +38,26 @@ class LinkedinCvParser
         (line == 'Page') || (Float(line) != nil rescue false) || !!(line =~ /Page \d/)
       end
 
-      def parse_date(value)
+      def parse_date(value, end_of_year: false)
         begin
           if value.downcase == 'present'
             DateTime.now
           else
-            DateTime.strptime(value, '%B %Y') rescue Date.strptime(value, '%Y')
+            strptime(value, end_of_year)
           end
         rescue
           nil
         end
+      end
+
+      private
+
+      def strptime(value, end_of_year)
+        DateTime.strptime(value, '%B %Y')
+      rescue
+        d = Date.strptime(value, '%Y')
+        d = d.next_year.prev_day if end_of_year
+        d
       end
     end
   end

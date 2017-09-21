@@ -161,6 +161,10 @@ describe LinkedinCvParser::Utils do
       it 'returns date' do
         expect(subject.parse_date '2003').to eq(DateTime.new(2003))
       end
+
+      it 'returns last date of the year' do
+        expect(subject.parse_date('2003', end_of_year: true)).to eq(DateTime.new(2003, 12, 31))
+      end
     end
 
 

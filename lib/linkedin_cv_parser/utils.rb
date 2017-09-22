@@ -30,7 +30,7 @@ class LinkedinCvParser
 
       def duration?(line)
         recruiter_version = !!(line =~ /((((\w*\s)*\d+) - ((\w*\s)*\d+)) \(([^\)]+)\))|(((\w+ \d+) - (Present)) \(([^\)]+)\))/)
-        user_version = !!(line =~ /(((\w+ \d+) - (Present)))/)
+        user_version = !!(line =~ /((((\w*\s)*\d+) - (Present)))/)
         recruiter_version || user_version
       end
 

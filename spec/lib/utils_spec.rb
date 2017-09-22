@@ -95,6 +95,7 @@ describe LinkedinCvParser::Utils do
   describe '.duration?' do
     it 'returns true' do
       [
+        '2015 - Present',
         'October 2015 - Present',
         'October 2015 - Present (7 months)',
         'January 2012 - May 2014 (2 years 5 months)',

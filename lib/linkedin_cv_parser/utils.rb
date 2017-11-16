@@ -2,6 +2,8 @@ require 'date'
 
 # -*- encoding : utf-8 -*-
 class LinkedinCvParser
+  class ParseFailed < StandardError; end
+
   class Utils
     class << self
       def header?(line)
@@ -40,13 +42,15 @@ class LinkedinCvParser
 
       def parse_date(value, end_of_year: false)
         begin
+          return nil if(value == nil || value == '')
+
           if value.downcase == 'present'
             DateTime.now
           else
             strptime(value, end_of_year)
           end
-        rescue
-          nil
+        rescue ArgumentError => e
+          raise ParseFailed.new(e.message)
         end
       end
 

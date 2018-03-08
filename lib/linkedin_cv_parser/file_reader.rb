@@ -31,7 +31,7 @@ class LinkedinCvParser
       # clean
       result = result.reject { |c| c.empty? }
       result = result.collect(&:strip)
-      result = result.map {|s| s.gsub(/\u00A0|\u2026|\u2022/, '')}
+      result = result.map {|s| s.gsub(/\u00A0|\u2026|\u2022/, ' ')}
     end
 
     def find_file(name)

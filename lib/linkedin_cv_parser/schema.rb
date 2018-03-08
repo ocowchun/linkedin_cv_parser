@@ -11,7 +11,9 @@ class LinkedinCvParser
           'person has recommended',
           'people have recommended',
           'Profile Notes and Activity',
-          'Interests'
+          'Interests',
+          'Honors and Awards'
+
         ]
       end
 
